@@ -1,7 +1,7 @@
 //Empty array for storing cat objects
 var cats =[];
-//var catNumOne;
-//var catNumTwo;
+var catNumOne;
+var catNumTwo;
 $image1 = $('#image1');
 $image2 = $('#image2');
 
@@ -23,6 +23,7 @@ var tracker = {
     totalSelections: 0,
     picPref1: 0,
     picPref2: 0,
+    prefStripesCounter: 0,
     prefStripes: false,
 };
 
@@ -57,18 +58,67 @@ function catSelector(){
   var x = randomInt();
   var y = randomInt();
 
-        while (cats[x].viewed && cats[y].viewed === true){
+        while ((cats[x].viewed && cats[y].viewed === true) || (cats[x] === cats[y])){
+          if(tracker.totalSelections > 6){
+                alert('You have voted on all the cats.')
+                break;
+              }
           var x = randomInt();
           var y = randomInt();
         }
+  catNumOne = cats[x];
+  catNumTwo = cats[y];
+
 
   $image1.attr('src', cats[x].fileLocation);
   $image2.attr('src', cats[y].fileLocation);
+  $image1.css('border-color', 'black');
+  $image2.css('border-color', 'black');
 
     };
 
-$( document ).ready(function() {
+catSelector();
+
+
+function buttonClick1(){
+  $image1.css("border-color","green");
+  $image2.css("border-color", "red");
+  console.log("I'm clicked");
+  catNumOne.viewed = true;
+  catNumTwo.viewed = true;
+  tracker.picPref1++;
+  tracker.totalSelections++;
+  console.log(tracker.totalSelections);
+
+      if(catNumOne.hasStripes===true){
+        tracker.prefStripesCounter++;
+      }
+  //catSelector();
+
+}
+
+function buttonClick2(){
+  $image2.css("border-color", "green");
+  $image1.css("border-color", "red");
+  console.log("I'm clicked");
+  catNumOne.viewed = true;
+  catNumTwo.viewed = true;
+  tracker.picPref2++;
+  tracker.totalSelections++;
+  //console.log(tracker.picPref2);
+      if(catNumTwo.hasStripes===true){
+        tracker.prefStripesCounter++;
+      }
+  //catSelector();
+
+
+
+}
+
+
+/*$( document ).ready(function() {
     catSelector();
   });
+*/
 
 
