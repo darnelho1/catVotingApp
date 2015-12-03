@@ -4,6 +4,8 @@ var catNumOne;
 var catNumTwo;
 $image1 = $('#image1');
 $image2 = $('#image2');
+// Get context with jQuery - using jQuery's .get() method.
+var ctx = $("#myChart").get(0).getContext("2d");
 
 
 //Cat Object Constructor
@@ -52,14 +54,40 @@ function randomInt(){
   //var random2 = Math.floor(Math.random() * 13);
 }
 
+//data object for chart.
+var data = {
+    labels: ['Cat on Left', 'Cat on Right'],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.5)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: [0,0]
+        },
+        {
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [0,0]
+        }
+    ]
+};
+
+// This will get the first returned node in the jQuery collection.
+var myBarChart = new Chart(ctx).Bar(data);
+
 //function to random select cat images
 function catSelector(){
 
   var x = randomInt();
   var y = randomInt();
 
-        while ((cats[x].viewed && cats[y].viewed === true) || (cats[x] === cats[y])){
-          if(tracker.totalSelections > 6){
+        while (cats[x].viewed === true || cats[y].viewed === true || (cats[x] === cats[y])){
+          if(tracker.totalSelections >= 6){
                 alert('You have voted on all the cats.')
                 break;
               }
@@ -75,7 +103,11 @@ function catSelector(){
   $image1.css('border-color', 'black');
   $image2.css('border-color', 'black');
 
+
+
     };
+
+
 
 catSelector();
 
@@ -89,6 +121,8 @@ function buttonClick1(){
   tracker.picPref1++;
   tracker.totalSelections++;
   console.log(tracker.totalSelections);
+  myBarChart.datasets[0].bars[0].value = tracker.picPref1;
+  myBarChart.update();
 
       if(catNumOne.hasStripes===true){
         tracker.prefStripesCounter++;
@@ -105,6 +139,8 @@ function buttonClick2(){
   catNumTwo.viewed = true;
   tracker.picPref2++;
   tracker.totalSelections++;
+  myBarChart.datasets[0].bars[1].value = tracker.picPref2;
+  myBarChart.update();
   //console.log(tracker.picPref2);
       if(catNumTwo.hasStripes===true){
         tracker.prefStripesCounter++;
@@ -114,6 +150,7 @@ function buttonClick2(){
 
 
 }
+
 
 
 /*$( document ).ready(function() {
