@@ -1,8 +1,52 @@
+<<<<<<< HEAD
 .parent{
   background-image: url(images/cat_background.png);
   background-repeat: repeat;
 }
 
+=======
+h1{
+text-align: center;
+}
+
+footer{
+  position: relative;
+  top: 40px;
+  background-color: #90C3D4;
+  font: inherit;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 10px;
+
+}
+section{
+  position: relative;
+  top: 75px;
+
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  background-color: #90C3D4;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+>>>>>>> e66a844de7c35753647681606567d1ca1e961477
 
 
 #image1{
@@ -19,12 +63,7 @@
   border-width:5px;
 }
 
-.parent{
-  display: flex;
-  border:solid;
-  flex-direction: row;
-  justify-content: space-around;
-}
+<<<<<<< HEAD
 
 .image{
   height: 300px;
@@ -37,3 +76,24 @@
   justify-content: center;
 }
 
+=======
+#navTitle{
+  display: inline;
+  font-size: 18px;
+
+}
+
+.image{
+  text-align: center;
+}
+
+.navBar2{
+  display: inline;
+  font-size: 18px;
+}
+
+#myChart{
+  position: relative;
+  top: 100px;
+}
+>>>>>>> e66a844de7c35753647681606567d1ca1e961477
