@@ -23,6 +23,7 @@ var Cat = function (name, fileLocation,hasStripes,votes,viewed,catColor){
 //tracker object
 var tracker = {
     totalSelections: 0,
+    selectedCats: [],
     picPref1: 0,
     picPref2: 0,
     prefStripesCounter: 0,
@@ -60,35 +61,54 @@ var data = {
     datasets: [
         {
             label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.5)",
+            // fillColor: "red",
             strokeColor: "rgba(220,220,220,0.8)",
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
-            data: [0,0]
-        },
-        {
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.5)",
-            strokeColor: "rgba(151,187,205,0.8)",
-            highlightFill: "rgba(151,187,205,0.75)",
-            highlightStroke: "rgba(151,187,205,1)",
             data: [0,0]
         }
     ]
 };
 
 // This will get the first returned node in the jQuery collection.
-var myBarChart = new Chart(ctx).Bar(data);
+var myBarChart = new Chart(ctx).Bar(data,{
+  responsive: true, scaleFontColor: "white", scaleFontSize: 15 });
 
-//function to random select cat images
+
+myBarChart.datasets[0].bars[0].fillColor = 'blue';
+myBarChart.datasets[0].bars[1].fillColor = 'orange';
+myBarChart.update();
+
+//Reset Function
+
+var clearAll = function(){
+  cats.forEach(function(cat){
+    cat.votes = 0;
+    cat.viewed = false;
+    });
+  tracker.totalSelections = 0;
+  tracker.picPref1 = 0;
+  tracker.picPref2 = 0;
+  tracker.prefStripesCounter = 0;
+  tracker.prefStripes = false;
+  myBarChart.datasets[0].bars[0].value = 0;
+  myBarChart.datasets[0].bars[1].value = 0;
+  myBarChart.update();
+}
+
+//function to randomly select cat images
 function catSelector(){
 
   var x = randomInt();
   var y = randomInt();
 
-        while (cats[x].viewed === true || cats[y].viewed === true || (cats[x] === cats[y])){
+        while ((cats[x] === cats[y]) || cats[x].viewed === true || cats[y].viewed === true){
           if(tracker.totalSelections >= 6){
-                alert('You have voted on all the cats.')
+                // clearAll();
+                $('#imagearticle').html("<div id='thanks'><p>You have voted on all the cats. Below you will see the cats you selected. Thanks For Voting!!!</p></div>")
+                tracker.selectedCats.forEach(function(cat){
+                  $('#imagearticle').append("<div><img class='selectediamge' src='"+cat.fileLocation+"'></div>")
+                })
                 break;
               }
           var x = randomInt();
@@ -99,23 +119,31 @@ function catSelector(){
 
 
   $image1.attr('src', cats[x].fileLocation);
+  // $image1.css('background-image', "url('" + cats[x].fileLocation + "')")
   $image2.attr('src', cats[y].fileLocation);
   $image1.css('border-color', 'black');
   $image2.css('border-color', 'black');
+  $image1.prop('disabled', false);
+  $image2.prop('disabled',false);
 
 
 
     };
 
 
-
+//Intial call of the cat selector function
 catSelector();
 
-
+//function to handle if cat on the left is selected.
 function buttonClick1(){
-  $image1.css("border-color","green");
-  $image2.css("border-color", "red");
-  console.log("I'm clicked");
+  tracker.selectedCats.push(catNumOne);
+  $image1.css({"border-color": "green",
+               "border-width": "15px"
+              });
+  $image2.css({"border-color": "red",
+               "border-width": "15px"
+              });
+  // console.log("I'm clicked");
   catNumOne.viewed = true;
   catNumTwo.viewed = true;
   tracker.picPref1++;
@@ -127,14 +155,30 @@ function buttonClick1(){
       if(catNumOne.hasStripes===true){
         tracker.prefStripesCounter++;
       }
+  $image1.prop('disabled', true);
+  $image2.prop('disabled', true);
+  console.log(tracker);
+  $('#cutestcat').html('Press "Next" To Vote on the Next Cat');
+  $('#cutestcat').css({"font-size": "40px",
+                       "color": "Yellow"
+                        });
+
+
   //catSelector();
 
 }
 
+//function to handle if cat on the right is selected.
+
 function buttonClick2(){
-  $image2.css("border-color", "green");
-  $image1.css("border-color", "red");
-  console.log("I'm clicked");
+  tracker.selectedCats.push(catNumTwo);
+  $image2.css({"border-color": "green",
+                "border-width": "15px"
+              });
+  $image1.css({"border-color": "red",
+                "border-width": "15px"
+              });
+  // console.log("I'm clicked");
   catNumOne.viewed = true;
   catNumTwo.viewed = true;
   tracker.picPref2++;
@@ -145,17 +189,18 @@ function buttonClick2(){
       if(catNumTwo.hasStripes===true){
         tracker.prefStripesCounter++;
       }
+  $image2.prop('disabled', true);
+  $image1.prop('disabled', true);
+  console.log(tracker);
+  $('#cutestcat').html('Press "Next" To Vote on the Next Cat');
+  $('#cutestcat').css({"font-size": "40px",
+                       "color": "Yellow"
+                        });
+
+
   //catSelector();
 
 
 
 }
-
-
-
-/*$( document ).ready(function() {
-    catSelector();
-  });
-*/
-
 

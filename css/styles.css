@@ -1,4 +1,12 @@
+.parent{
+  background-image: url(images/cat_background.png);
+  background-repeat: repeat;
+}
+
+
+
 #image1{
+  display: flex;
   border:solid;
   border-color: black;
   border-width: 5px;
@@ -10,3 +18,22 @@
   border-color: black;
   border-width:5px;
 }
+
+.parent{
+  display: flex;
+  border:solid;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.image{
+  height: 300px;
+  width: 300px;
+}
+
+.myChart{
+  display: flex;
+  border: solid;
+  justify-content: center;
+}
+

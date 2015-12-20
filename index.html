@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/styles.css">
-  <title></title>
+<link rel="stylesheet" type="text/css" href="css/newstyles.css">
+  <title>Cats</title>
 </head>
-<body>
+<body class="parent">
+    <header class ='headerstyle'>
+      <h1>Cats  Voting App (Code -201)</h1>
+    </header>
 
-    <div>
-        <div>
+    <section class = 'wrapper'>
+      <aside class='asidestyle'>
+      <ul class="navBar">
+        <li id='li1'><a href="">Home</a></li>
+        <li id="li2"><a href="">About</a></li>
+        <li id="li3"><a href="">Contact Us</a></li>
+      </ul>
+
+      </aside>
+
+      <article class = 'contentWrapper'>
+
+      <h2 id='cutestcat'>
+            Vote on the cat you think is the cutest and see the results charted live below.
+      </h2>
+
+      <article id='imagearticle'>
+        <div class="imagewrapper">
           <!-- <img id="image1" style="border:solid" src=""> -->
-          <input onclick="buttonClick1()" id="image1" type="image" src="" alt="Submit">
+          <input class="image" onclick="buttonClick1()" id="image1" type="image" src="" alt="Submit">
         </div>
-    </div>
-
-    <div>
-        <div>
+        <div class="imagewrapper">
           <!-- <img id="image2" style="border:solid" src=""> -->
-          <input onclick="buttonClick2()" id="image2" type="image" src="" alt="Submit">
+          <input class="image" onclick="buttonClick2()" id="image2" type="image" src="" alt="Submit">
         </div>
-    </div>
+      </article>
 
-    <div>
-      <div>
-        <button onclick="catSelector()" type="button">Next</button>
-      </div>
-    </div>
+      <article id='buttontag' >
+        <div>
+          <button class="btn" onclick="catSelector()" type="button">Next</button>
+        </div>
+      </article>
 
-    <div>
-      <div>
-        <canvas id="myChart" width="400" height="400"></canvas>
-      </div>
+      <article>
+        <div>
+          <canvas id="myChart" height="300"></canvas>
+        </div>
+      </article>
+      </article>
 
-    </div>
+    </section>
+
+
 
 </body>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
