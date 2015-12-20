@@ -1,37 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/styles.css">
-  <title></title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="CSS/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="CSS/normalize.css">
+  <meta name="author" content="Darnell Holder">
+  <title>Cutest Kitten Contest</title>
 </head>
-<body>
 
-    <div>
-        <div>
-          <!-- <img id="image1" style="border:solid" src=""> -->
-          <input onclick="buttonClick1()" id="image1" type="image" src="" alt="Submit">
-        </div>
+<body id = 'body'>
+  <div class="container">
+
+    <div class="row">
+      <header>
+        <nav class="twelve columns">
+          <p id="navTitle">Cats</p>
+          <ul class="u-pull-right">
+            <li class="navBar2"><a href=""> Home</a></li>
+            <li class="navBar2"><a href=""> About</a></li>
+            <li class="navBar2"><a href=""> Info</a></li>
+          </ul>
+        </nav>
+      </header>
     </div>
 
-    <div>
-        <div>
-          <!-- <img id="image2" style="border:solid" src=""> -->
-          <input onclick="buttonClick2()" id="image2" type="image" src="" alt="Submit">
-        </div>
-    </div>
 
-    <div>
-      <div>
+
+    <section>
+      <div class="row">
+        <article class="six columns" >
+
+          <div class="u-pull-left four columns image">
+            <!-- <img id="image1" style="border:solid" src=""> -->
+            <input onclick="buttonClick1()" id="image1" type="image" src="" alt="Submit">
+          </div>
+        </article>
+
+        <article class="six columns">
+
+          <div class="u-pull-right four columns image">
+                <!-- <img id="image2" style="border:solid" src=""> -->
+                <input onclick="buttonClick2()" id="image2" type="image" src="" alt="Submit">
+          </div>
+        </article>
+
+    <div class="container">
+      <div class="row twelve columns">
         <button onclick="catSelector()" type="button">Next</button>
       </div>
     </div>
 
-    <div>
-      <div>
+    </div>
+    </section>
+
+    <div class="container">
+      <div class="row four columns">
         <canvas id="myChart" width="400" height="400"></canvas>
       </div>
 
     </div>
+
+  </div>
 
 </body>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>

@@ -1,3 +1,46 @@
+h1{
+text-align: center;
+}
+
+footer{
+  position: relative;
+  top: 40px;
+  background-color: #90C3D4;
+  font: inherit;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 10px;
+
+}
+section{
+  position: relative;
+  top: 75px;
+
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  background-color: #90C3D4;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+
 #image1{
   border:solid;
   border-color: black;
@@ -9,4 +52,24 @@
   border:solid;
   border-color: black;
   border-width:5px;
+}
+
+#navTitle{
+  display: inline;
+  font-size: 18px;
+
+}
+
+.image{
+  text-align: center;
+}
+
+.navBar2{
+  display: inline;
+  font-size: 18px;
+}
+
+#myChart{
+  position: relative;
+  top: 100px;
 }
